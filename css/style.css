@@ -4,6 +4,24 @@
     box-sizing: border-box;
 }
 
+body {
+    user-select: none; /* Standard */
+    -webkit-user-select: none; /* Chrome, Safari */
+    -ms-user-select: none; /* IE/Edge */
+    pointer-events: none; /* Allow interaction with clickable elements */
+}
+
+a, button {
+    user-select: text; /* Allow text selection for anchors and buttons */
+    pointer-events: auto; /* Ensure clickability */
+}
+
+/* Prevent image dragging */
+img {
+    pointer-events: none;
+    -webkit-user-drag: none; /* Chrome, Safari */
+}
+
 body{
     background-image: url('../images/banner.jpg');
     background-repeat: no-repeat;
