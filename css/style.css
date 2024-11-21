@@ -12,8 +12,8 @@ body {
 }
 
 a, button {
-    user-select: text; /* Allow text selection for anchors and buttons */
-    pointer-events: auto; /* Ensure clickability */
+        user-select: none;
+        pointer-events: auto;
 }
 
 /* Prevent image dragging */

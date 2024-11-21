@@ -238,45 +238,62 @@
             });
         });
 
-        </script><script>
-            document.addEventListener('contextmenu', function(e) {
-                // Allow right-click on links and buttons
-                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
-                    return;
-                }
-                e.preventDefault();
-            });
         </script>
-
-        <!-- Disable common keyboard shortcuts -->
+        
         <script>
-            document.addEventListener('keydown', function(e) {
-                // Disable F12
-                if (e.key === "F12") {
+            // Disable right-click context menu for the entire document (body)
+            document.addEventListener('contextmenu', function (e) {
+                e.preventDefault(); // Prevent right-click on the body
+            });
+        
+            // Disable specific keyboard shortcuts globally
+            document.addEventListener('keydown', function (e) {
+                // Disable F12 (Developer Tools)
+                if (e.key === 'F12') {
                     e.preventDefault();
                 }
-                // Disable Ctrl+Shift+I (Developer Tools)
-                if (e.ctrlKey && e.shiftKey && e.key === "I") {
+                // Disable Ctrl+Shift+I (Inspect Element)
+                if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                    e.preventDefault();
+                }
+                // Disable Ctrl+Shift+J (Console)
+                if (e.ctrlKey && e.shiftKey && e.key === 'J') {
                     e.preventDefault();
                 }
                 // Disable Ctrl+U (View Source)
-                if (e.ctrlKey && e.key === "u") {
+                if (e.ctrlKey && e.key === 'u') {
+                    e.preventDefault();
+                }
+                // Disable Ctrl+Shift+U (alternative View Source method)
+                if (e.ctrlKey && e.shiftKey && e.key === 'U') {
                     e.preventDefault();
                 }
             });
-        </script>
-
-        <!-- Detect if developer tools are open -->
-        <script>
+        
+            // Disable drag event for the entire body (to prevent dragging elements)
+            document.body.addEventListener('dragstart', function (e) {
+                e.preventDefault(); // Prevent dragging on the body
+            });
+        
+            // Prevent inspecting elements by detecting DevTools
             (function() {
-                const element = new Image();
-                Object.defineProperty(element, 'id', {
+                const devToolsCheck = new Image();
+                Object.defineProperty(devToolsCheck, 'id', {
                     get: function() {
-                        window.location.href = 'https://topratedcasinobonus.com/'; // Redirect if developer tools are open
+                        // If DevTools are opened, block the page by redirecting or displaying a message
+                        document.body.innerHTML = '<h1>Access Denied</h1>';
                     }
                 });
-                console.log(element);
+                console.log(devToolsCheck);
             })();
+        
+            // Periodically check to detect if DevTools are open based on window size
+            setInterval(function() {
+                const threshold = 160; // Height threshold to detect DevTools
+                if (window.outerHeight - window.innerHeight > threshold) {
+                    document.body.innerHTML = '<h1>Access Denied</h1>'; // Block page if DevTools are open
+                }
+            }, 1000);
         </script>
     </body>
 </html>
