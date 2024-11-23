@@ -4,22 +4,21 @@
     box-sizing: border-box;
 }
 
-body {
-    user-select: none; /* Standard */
-    -webkit-user-select: none; /* Chrome, Safari */
-    -ms-user-select: none; /* IE/Edge */
-    pointer-events: none; /* Allow interaction with clickable elements */
+h1, h2, h3, h4, h5, h6, p, small, span, ul, li, br {
+    user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 a, button {
-        user-select: none;
-        pointer-events: auto;
+    user-select: none;
+    pointer-events: auto;
 }
 
-/* Prevent image dragging */
 img {
     pointer-events: none;
-    -webkit-user-drag: none; /* Chrome, Safari */
+    -webkit-user-drag: none;
 }
 
 body{
